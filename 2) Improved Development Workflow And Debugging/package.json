@@ -1,0 +1,13 @@
+{
+  "name": "node-course",
+  "version": "1.0.0",
+  "description": "Node Course",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
