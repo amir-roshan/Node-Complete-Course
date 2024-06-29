@@ -9,7 +9,8 @@ router.get('/', (req, res, next) => {
     // res.sendFile(path.join(__dirname, '..', "views", "shop.html"));
     // OR
     console.log(products);
-    res.render('shop');
+    // the second argument is the data that will be passed to the view
+    res.render('shop', { prods: products, docTitle: 'Shop' });
 });
 
 export default router;

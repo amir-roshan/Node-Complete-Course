@@ -15,12 +15,12 @@ router.get('/add-product', (req, res, next) => {
 
 // /admin/add-product => POST
 router.post('/add-product', (req, res, next) => {
-    if (!req.body.title) {
+    if (!req.body.title && req.body.price <= 0) {
         return res.redirect('/admin/add-product');
     }
     else {
         // this data is inhereted through the server and it is not private
-        products.push({ title: req.body.title });
+        products.push({ title: req.body.title, price: req.body.price });
         res.redirect('/');
     }
 });
