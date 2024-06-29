@@ -8,6 +8,11 @@ import shopRoutes from "./routes/shop.js";
 
 const app = express();
 
+// Setting up the view engine to pug
+app.set('view engine', 'pug');
+// Setting up the views folder to use the template engine to iterate over the data in html files in the views folder
+app.set('views', 'views');
+
 // To get the current file name
 const __filename = fileURLToPath(import.meta.url);
 
@@ -32,7 +37,7 @@ app.use(shopRoutes);
 
 // 404 page - at the end of the to catch all routes that are not defined and send a 404
 app.use((req, res, next) => {
-    res.status(404).sendFile("/views/404.html", { root: '.' });
+    res.status(404).render('404');
 });
 
 app.listen(3000);
