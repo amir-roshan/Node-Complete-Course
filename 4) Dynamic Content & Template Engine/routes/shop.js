@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
     // OR
     console.log(products);
     // the second argument is the data that will be passed to the view
-    res.render('shop', { prods: products, docTitle: 'Shop' });
+    res.render('shop', { prods: products, docTitle: 'Shop', path: '/' });
 });
 
 export default router;

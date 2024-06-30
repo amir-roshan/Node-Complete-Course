@@ -5,11 +5,23 @@ import { fileURLToPath } from 'url';
 
 import { adminRouter, products } from './routes/admin.js';
 import shopRoutes from "./routes/shop.js";
+import { create } from 'express-handlebars';
 
+const hbs = create({
+    extname: '.hbs', // Specify the file extension for handlebars templates
+    helpers: {
+        eq: (a, b) => a === b // Helper function to compare two values
+    }
+});
 const app = express();
 
+// Setting up the view engine to handlebars
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');
+
 // Setting up the view engine to pug
-app.set('view engine', 'pug');
+// app.set('view engine', 'pug');
+
 // Setting up the views folder to use the template engine to iterate over the data in html files in the views folder
 app.set('views', 'views');
 
