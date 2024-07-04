@@ -16,11 +16,14 @@ const hbs = create({
 const app = express();
 
 // Setting up the view engine to handlebars
-app.engine('hbs', hbs.engine);
-app.set('view engine', 'hbs');
+// app.engine('hbs', hbs.engine);
+// app.set('view engine', 'hbs');
 
 // Setting up the view engine to pug
 // app.set('view engine', 'pug');
+
+// Setting up the view engine to ejs
+app.set('view engine', 'ejs');
 
 // Setting up the views folder to use the template engine to iterate over the data in html files in the views folder
 app.set('views', 'views');
