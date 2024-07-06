@@ -3,9 +3,10 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { adminRouter } from './routes/admin.js';
+import adminRouts from './routes/admin.js';
 import shopRoutes from "./routes/shop.js";
 
+import * as errors from './controllers/errors.js';
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -18,10 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '/public')));
 
 
-app.use('/admin', adminRouter);
+app.use('/admin', adminRouts);
 app.use(shopRoutes);
-app.use((req, res, next) => {
-    res.status(404).render('404');
-});
+app.use(errors.get404);
 
 app.listen(3000);

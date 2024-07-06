@@ -1,4 +1,5 @@
 import express from "express";
+import * as productsController from '../controllers/products.js';
 
 // we can use the root directory as a base path for the views
 import rootDir from "../utils/path.js";
@@ -6,24 +7,12 @@ import rootDir from "../utils/path.js";
 // This router is like a mini express app that can be plugged into another express app.
 const router = express.Router();
 
-const products = [];
 
 // /admin/add-product => GET
-router.get('/add-product', (req, res, next) => {
-    res.render('add-product', { pageTitle: 'Add Product', path: '/admin/add-product' });
-});
+router.get('/add-product', productsController.getAddProduct);
 
 // /admin/add-product => POST
-router.post('/add-product', (req, res, next) => {
-    if (!req.body.title && req.body.price <= 0) {
-        return res.redirect('/admin/add-product');
-    }
-    else {
-        // this data is inhereted through the server and it is not private
-        products.push({ title: req.body.title, price: req.body.price });
-        res.redirect('/');
-    }
-});
+router.post('/add-product', productsController.postAddProduct);
 
-export { router as adminRouter, products };
+export default router;
 
