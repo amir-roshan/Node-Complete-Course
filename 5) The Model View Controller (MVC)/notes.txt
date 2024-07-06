@@ -1,0 +1,12 @@
+MVC is for separation of concerns and design patterns.
+Model - Data, View - User Interface, Controller - Business Logic
+
+Model is object that represents the data in your application. 
+It is responsible for managing the data of the application. 
+It responds to the request from the view and to the instructions from the controller to update itself.
+
+View is the user interface of the application. 
+Decoupled from the model and controller.
+
+Controllers are responsible for responding to user input and perform interactions on the data model objects.
+Relates the model and view.
