@@ -2,6 +2,17 @@ import fs from 'fs';
 import pathFile from '../utils/pathFile.js';
 import path from 'path';
 
+const p = path.join(pathFile(import.meta.url), '..', 'data', 'products.json');
+
+const getProductsFormFile = cb => {
+    fs.readFile(p, (err, fileContent) => {
+        if (err) {
+            cb([]);
+        }
+        cb(JSON.parse(fileContent));
+    });
+};
+
 export default class Product {
 
     constructor(title, price) {
@@ -10,19 +21,9 @@ export default class Product {
     }
 
     save() {
-        const p = path.join(pathFile(import.meta.url), '..', 'data', 'products.json');
-
-        // p is the path to the file
-        fs.readFile(p, (err, fileContent) => {
-            let products = [];
-            if (!err) {
-                // JSON is a helper object that has a method called parse
-                products = JSON.parse(fileContent);
-            }
-
+        getProductsFormFile(products => {
             products.push(this);
-
-            fs.writeFile(p, JSON.stringify(products), (err) => {
+            fs.writeFile(p, JSON.stringify(products), err => {
                 console.log(err);
             });
         });
@@ -31,15 +32,6 @@ export default class Product {
 
     // We use the call back function to pass the data to the controller.
     static fetchAll(cb) {
-
-        const p = path.join(pathFile(import.meta.url), '..', 'data', 'products.json');
-
-        fs.readFile(p, (err, fileContent) => {
-            if (err) {
-                cb([]);
-            }
-
-            cb(JSON.parse(fileContent));
-        });
+        getProductsFormFile(cb);
     }
 }
