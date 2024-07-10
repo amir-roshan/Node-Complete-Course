@@ -1,4 +1,4 @@
-import Product from "../models/product.js";
+import Product from "../models/Product.js";
 
 export const getAddProduct = (req, res, next) => {
     res.render('admin/add-product', { pageTitle: 'Add Product', path: '/admin/add-product' });
@@ -12,18 +12,18 @@ export const postAddProduct = (req, res, next) => {
 
     else {
         // this data is inhereted through the server and it is not private
-        const product = new Product(req.body.title, req.body.price);
+
+        const title = req.body.title;
+        const imgUrl = req.body.imgUrl;
+        const description = req.body.description;
+        const price = req.body.price;
+
+        const product = new Product(title, imgUrl, description, price);
         product.save();
         res.redirect('/');
     }
 };
 
-export const getProducts = (req, res, next) => {
-
-    // We call the call back function to pass the data to the controller.
-    Product.fetchAll(products => {
-        res.render('shop/product-list', { prods: products, pageTitle: 'Shop', path: '/' });
-    });
+export const getProductsList = (req, res, next) => {
+    res.render('admin/admin-product-list', { pageTitle: 'Admin Products', path: '/admin/admin-product-list' });
 };
-
-

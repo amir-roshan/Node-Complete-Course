@@ -15,8 +15,10 @@ const getProductsFormFile = cb => {
 
 export default class Product {
 
-    constructor(title, price) {
+    constructor(title, imgUrl, description, price) {
         this.title = title;
+        this.description = description;
+        this.imgUrl = imgUrl;
         this.price = price;
     }
 
