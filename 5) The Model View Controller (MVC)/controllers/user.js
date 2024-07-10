@@ -12,6 +12,10 @@ export const getAllProducts = (req, res, next) => {
     res.render('shop/index', { pageTitle: 'Shop', path: '/products' });
 };
 
+export const getOrders = (req, res, next) => {
+    res.render('shop/orders', { pageTitle: 'Orders', path: '/orders' });
+};
+
 export const getCart = (req, res, next) => {
     res.render('shop/cart', { pageTitle: 'Cart', path: '/cart' });
 };

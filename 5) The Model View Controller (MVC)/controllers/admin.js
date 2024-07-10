@@ -25,5 +25,12 @@ export const postAddProduct = (req, res, next) => {
 };
 
 export const getProductsList = (req, res, next) => {
-    res.render('admin/admin-product-list', { pageTitle: 'Admin Products', path: '/admin/admin-product-list' });
+    Product.fetchAll(products => {
+        res.render('admin/admin-product-list', { prods: products, pageTitle: 'Admin Products', path: '/admin/admin-product-list' });
+    });
+};
+
+
+export const getEditProduct = (req, res, next) => {
+    res.render('admin/edit-product', { pageTitle: 'Edit Product', path: '/admin/edit-product' });
 };
