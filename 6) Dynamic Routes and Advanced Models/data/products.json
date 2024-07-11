@@ -1,17 +1,20 @@
 [
   {
+    "id": "18372819",
     "title": "A Book",
     "description": "A Good Book",
     "imgUrl": "https://images.squarespace-cdn.com/content/v1/60f1a490a90ed8713c41c36c/1629223610791-LCBJG5451DRKX4WOB4SP/37-design-powers-url-structure.jpeg?format=1500w",
     "price": "12.99"
   },
   {
+    "id": "2331312",
     "title": "A book",
     "description": "A very bad book",
     "imgUrl": "https://t4.ftcdn.net/jpg/06/08/97/79/360_F_608977940_9T9cE9mavckeAM4pDU0Mzz1OLcmwLBVP.jpg",
     "price": "179.99"
   },
   {
+    "id": "323123523",
     "title": "Hello There",
     "description": "A book which can say hello",
     "imgUrl": "https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=1356&h=668&fit=crop",

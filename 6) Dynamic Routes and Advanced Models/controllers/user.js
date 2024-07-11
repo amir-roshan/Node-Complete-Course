@@ -14,6 +14,11 @@ export const getAllProducts = (req, res, next) => {
     });
 };
 
+export const getProduct = (req, res, next) => {
+    const productId = req.params.productId; // params is an object that holds the dynamic segments of the URL.
+    res.redirect('/');
+};
+
 export const getOrders = (req, res, next) => {
     res.render('shop/orders', { pageTitle: 'Orders', path: '/orders' });
 };
