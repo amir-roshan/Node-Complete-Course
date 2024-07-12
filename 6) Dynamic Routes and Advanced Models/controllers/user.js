@@ -1,4 +1,5 @@
 import Product from "../models/Product.js";
+import Cart from "../models/Cart.js";
 
 export const getProducts = (req, res, next) => {
 
@@ -27,4 +28,13 @@ export const getOrders = (req, res, next) => {
 
 export const getCart = (req, res, next) => {
     res.render('shop/cart', { pageTitle: 'Cart', path: '/cart' });
+};
+
+export const postCart = (req, res, next) => {
+    // Posted data is stored in the body object.
+    const productId = req.body.productId;
+    res.redirect("/cart");
+    Product.findById(productId, product => {
+        Cart.addProduct(productId, product.price);
+    });
 };

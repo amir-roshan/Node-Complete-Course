@@ -1,6 +1,7 @@
 import fs from 'fs';
-import pathFile from '../utils/pathFile.js';
 import path from 'path';
+
+import pathFile from '../utils/pathFile.js';
 
 const p = path.join(pathFile(import.meta.url), '..', 'data', 'products.json');
 
@@ -35,7 +36,7 @@ export default class Product {
     }
 
     save() {
-        this.id = Math.random().toString();
+        this.id = (Math.random() * 10).toString();
         getProductsFormFile(products => {
             products.push(this);
             fs.writeFile(p, JSON.stringify(products), err => {

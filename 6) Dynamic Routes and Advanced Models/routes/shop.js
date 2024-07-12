@@ -10,4 +10,6 @@ router.get('/products/:productId', productsController.getProduct); // A dynamic 
 router.get('/cart', productsController.getCart);
 router.get('/orders', productsController.getOrders);
 
+router.post('/add-to-cart', productsController.postCart);
+
 export default router;
